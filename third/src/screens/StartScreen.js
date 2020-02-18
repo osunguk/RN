@@ -6,11 +6,11 @@ export class StartScreen extends Component {
     return (
       <>
         <View style={{ justifyContent: 'center', flex: 1, alignItems: 'center' }}>
-          <Text style={{fontSize:30}}>
+          <Text style={{ fontSize: 30 }}>
             Start Screen
           </Text>
-          <View style={{flexWrap:'wrap', flexDirection:'row'}}>
-            <View style={{ flex: 1, padding:10 }}>
+          <View style={{ flexWrap: 'wrap', flexDirection: 'row' }}>
+            <View style={{ flex: 1, padding: 10 }}>
               <Button
                 title='go login'
                 onPress={() => {
@@ -18,7 +18,7 @@ export class StartScreen extends Component {
                 }}
               />
             </View>
-            <View style={{ flex: 1, padding:10}}>
+            <View style={{ flex: 1, padding: 10 }}>
               <Button
                 title='go test'
                 onPress={() => {
@@ -26,7 +26,7 @@ export class StartScreen extends Component {
                 }}
               />
             </View>
-            <View style={{ flex: 1, padding:10}}>
+            <View style={{ flex: 1, padding: 10 }}>
               <Button
                 title='go MobX'
                 onPress={() => {
@@ -34,7 +34,7 @@ export class StartScreen extends Component {
                 }}
               />
             </View>
-            <View style={{ flex: 1, padding:10}}>
+            <View style={{ flex: 1, padding: 10 }}>
               <Button
                 title='go Request'
                 onPress={() => {
@@ -42,11 +42,21 @@ export class StartScreen extends Component {
                 }}
               />
             </View>
-            <View style={{ flex: 1, padding:10}}>
+            <View style={{ flex: 1, padding: 10 }}>
               <Button
                 title='Todo App'
                 onPress={() => {
                   this.props.navigation.navigate('Todo')
+                }}
+              />
+            </View>
+          </View>
+          <View style={{ flexWrap: 'wrap', flexDirection: 'row' }}>
+            <View style={{ flex: 0.2, padding: 10 }}>
+              <Button 
+                title='data form'
+                onPress={() => {
+                  this.props.navigation.navigate('upLoad')
                 }}
               />
             </View>
