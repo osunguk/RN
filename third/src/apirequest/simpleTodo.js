@@ -23,23 +23,25 @@ export default class TODO extends React.Component {
       .then(result => result["data"])
       .then(res => {
         for (const x in res) {
-          tmp.push(res[x])
+          tmp.push({x: res[x]})
         }
         this.setState({
-          todoList: tmp
+          todoList: res
         })
       })
   }
 
   test = () => {
-    return this.state.todoList.map((todo, i) => {
+    const todoL = Object.keys(this.state.todoList)
+    return todoL.map((todo) => {
       return (
         <View style={{ flex: 1, flexDirection: 'row' }}>
-          <Text key={i} style={{ margin: 10, padding: 10 }}> >  {todo.task}</Text>
+          <Text key={todo} style={{ margin: 10, padding: 10 }}> >  {this.state.todoList[todo]["task"]}</Text>
           <View>
             <Button
               title="delete"
               color='red'
+              onPress={() => {this.DeleteTask(todo)}}
             />
           </View>
         </View>
@@ -64,15 +66,21 @@ export default class TODO extends React.Component {
   PostTask = () => {
     if (this.state.text.length > 0) {
       api.post('', { task: this.state.text })
+      .then(
+        this.Refresh()
+      )
     } else {
       alert('Input your task')
     }
-    this.Refresh()
     this.textInput.clear()
   }
 
-  DeleteTask = () => {
-    api.delete('')
+  DeleteTask = (todo) => {
+    console.log(todo)
+    api.delete(`${todo}`)
+    .then(
+      this.Refresh()
+    )
   }
 
   render = () => {
