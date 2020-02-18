@@ -27,6 +27,9 @@ import RequestTest from './apirequest/request'
 
 import Todo from './apirequest/simpleTodo'
 
+import upload from './upload/upload'
+import fileupload from './upload/fileupload'
+
 const practiceNavigation = createDrawerNavigator({
   'stack navi':stack,
   'drawer navi':drawer,
@@ -76,7 +79,9 @@ const appNavigation = createStackNavigator({
   RequestTest: RequestTest,
 
   Todo:Todo,
-  
+
+  upLoad:upload,  
+  fileupload:fileupload
 }, {
   initialRouteName: 'StartScreen',
 })
