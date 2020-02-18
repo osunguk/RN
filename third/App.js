@@ -9,14 +9,14 @@
 import React, { Component } from 'react';
 import Router from './src/Router'
 import { Provider } from 'mobx-react'
-import CounterStore from './src/stores/counter'
+import Store from './src/stores/store'
 
-const counter = new CounterStore();
+const store = new Store();
 
 class App extends Component {
   render() {
     return (
-      <Provider counter={counter}>
+      <Provider store={store}>
         <Router/>
       </Provider>
     )

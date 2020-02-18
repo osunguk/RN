@@ -4,18 +4,18 @@ import { observer, inject } from 'mobx-react'
 import Test from '../components/showStore'
 
 
-@inject('counter')
+@inject('store')
 @observer
 export default class transScreen extends Component {
   render() {
-    const { counter } = this.props;
+    const { store } = this.props;
     return (
       <>
         <View style={{ justifyContent: 'center', flex: 1, alignItems: 'center', backgroundColor:'gray' }}>
           <Text style={{ fontSize: 30 }}>
             Show Global State
           </Text>
-          <Text style={{margin:10, fontSize: 20, fontStyle: 'italic', borderBottomWidth: 1 }}>{counter.number}</Text>
+          <Text style={{margin:10, fontSize: 20, fontStyle: 'italic', borderBottomWidth: 1 }}>{store.number}</Text>
           <Button 
             title= 'go back'
             onPress={() => {
