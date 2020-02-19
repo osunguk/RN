@@ -58,8 +58,13 @@ export default class fijleupload extends Component {
             title='file load test'
             onPress={() => { this.action1() }}
           />
+          <Button
+            title='next'
+            onPress={() => { this.props.navigation.navigate('imagePick') }}
+          />
           <ScrollView>
             {this.state.photos.map((p, i) => {
+              console.log(p.node.image.uri)
               return (
                 <Image
                   key={i}
