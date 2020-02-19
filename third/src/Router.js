@@ -29,6 +29,7 @@ import Todo from './apirequest/simpleTodo'
 
 import upload from './upload/upload'
 import fileupload from './upload/fileupload'
+import imagePick from './upload/imagePick'
 
 const practiceNavigation = createDrawerNavigator({
   'stack navi':stack,
@@ -81,7 +82,8 @@ const appNavigation = createStackNavigator({
   Todo:Todo,
 
   upLoad:upload,  
-  fileupload:fileupload
+  fileupload:fileupload,
+  imagePick:imagePick,
 }, {
   initialRouteName: 'StartScreen',
 })
