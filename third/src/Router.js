@@ -3,30 +3,35 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createDrawerNavigator } from 'react-navigation-drawer'
 import { createBottomTabNavigator, createMaterialTopTabNavigator } from 'react-navigation-tabs';
 
+// 라우터 text
 import stack from './practice/stack'
 import drawer from './practice/drawer'
 import tab from './practice/tab'
 import reset from './practice/reset'
 import { choice } from './practice/choice'
-
+//
 import test1 from './practice/test1'
 import test2 from './practice/test2'
 import test3 from './practice/test3'
 import test4 from './practice/test4'
 import test5 from './practice/test5'
-
+//
 import { StartScreen } from './screens/StartScreen'
 import { LoginScreen } from './screens/LoginScreen'
 import { SignupScreen } from './screens/SignupScreen'
 import { MainScreen } from './screens/MainScreen'
 
+// 상태관리
 import MobXTest from './mobx/simple'
 import MobXTest2 from './mobx/transScreen'
 
+// ajax 요청
 import RequestTest from './apirequest/request'
 
+// 간단한 todo
 import Todo from './apirequest/simpleTodo'
 
+// 이미지 출력 및 업로드
 import upload from './upload/upload'
 import fileupload from './upload/fileupload'
 import imagePick from './upload/imagePick'
