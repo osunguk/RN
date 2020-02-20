@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View, Button } from 'react-native'
+import AsyncStorage from '@react-native-community/async-storage'
 
 export class StartScreen extends Component {
   render() {
@@ -52,11 +53,37 @@ export class StartScreen extends Component {
             </View>
           </View>
           <View style={{ flexWrap: 'wrap', flexDirection: 'row' }}>
-            <View style={{ flex: 0.2, padding: 10 }}>
+            <View style={{ flex: 1, padding: 10 }}>
               <Button 
                 title='data form'
                 onPress={() => {
                   this.props.navigation.navigate('upLoad')
+                }}
+              />
+            </View>
+            <View style={{ flex: 1, padding: 10 }}>
+              <Button 
+                title='View paper'
+                onPress={() => {
+                  this.props.navigation.navigate('tabView')
+                }}
+              />
+            </View>
+            <View style={{ flex: 1, padding: 10 }}>
+              <Button 
+                title='Toast msg'
+                onPress={() => {
+                  this.props.navigation.navigate('toastMessage')
+                }}
+              />
+            </View>
+            <View style={{ flex: 1, padding: 10 }}>
+              <Button 
+                title='log out'
+                color='red'
+                onPress={async() => {
+                  await AsyncStorage.clear()
+                  this.props.navigation.navigate('Loading')
                 }}
               />
             </View>
