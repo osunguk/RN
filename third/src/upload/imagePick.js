@@ -7,7 +7,7 @@ const options = {
   noData: true,
   mediaType: "photo",
   title: 'Image Picker',
-  customButtons: [{ name:'name', title:'custon title'}],
+  customButtons: [{ name: 'name', title: 'custon title' }],
 };
 
 export default class imagePick extends Component {
@@ -27,18 +27,17 @@ export default class imagePick extends Component {
       } else if (res.customButton) {
         console.log('User tapped custom button: ', res.customButton);
       } else {
-        const source = { uri: res.uri };
+        // const source = { uri: res.uri };
         this.setState({
-          avatarSource: source
+          avatarSource: res.uri
         });
       }
     })
-
   }
-  render() {
-    return (
-      <View style={{ marginTop: 20, flex: 1, justifyContent: 'center', alignSelf: 'center' }}>
-        <Text style={{alignSelf:'center'}}>up load image</Text>
+
+  showImage = () => {
+    if (this.state.avatarSource) {
+      return (
         <Image
           style={{
             marginBottom: 10,
@@ -46,9 +45,20 @@ export default class imagePick extends Component {
             width: 300,
             height: 300,
           }}
-          source={this.state.avatarSource}
+          source={{ uri: this.state.avatarSource }}
           resizeMode="contain"
         />
+      )
+    }
+  }
+
+
+  render() {
+    
+    return (
+      <View style={{ marginTop: 20, flex: 1, justifyContent: 'center', alignSelf: 'center' }}>
+        <Text style={{ alignSelf: 'center' }}>up load image</Text>
+        {this.showImage()}
         <Button
           title='up load Image'
           onPress={() => { this.action() }}
