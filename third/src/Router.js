@@ -36,26 +36,48 @@ import upload from './upload/upload'
 import fileupload from './upload/fileupload'
 import imagePick from './upload/imagePick'
 
+// auth 관련
+import { Loading } from './auth/Loading'
+import { Login } from './auth/Login'
+import { Signup } from './auth/Signup'
+
+// tabView - View Paper
+import { tabView } from './viewpaper/tabView'
+
+// toastMessage
+import { toastMessage } from './toast/toastMessage'
+
+const authNavigation = createStackNavigator({
+  Login: Login,
+  Signup: Signup
+}, {
+  defaultNavigationOptions: {
+    headerShown: false
+  },
+  initialRouteName: 'Login'
+}
+)
+
 const practiceNavigation = createDrawerNavigator({
-  'stack navi':stack,
-  'drawer navi':drawer,
-  'tab navi':tab,
-  'reset test':reset,
-  choice:choice
-},{
-  initialRouteName:'choice'
+  'stack navi': stack,
+  'drawer navi': drawer,
+  'tab navi': tab,
+  'reset test': reset,
+  choice: choice
+}, {
+  initialRouteName: 'choice'
 })
 
 const resetTest = createStackNavigator({
-  'reset test':reset,
-  'test1':test1,
-  'test2':test2,
-  'test3':test3,
-  'test4':test4,
-  'test5':test5,
-  
-},{
-  defaultNavigationOptions : {
+  'reset test': reset,
+  'test1': test1,
+  'test2': test2,
+  'test3': test3,
+  'test4': test4,
+  'test5': test5,
+
+}, {
+  defaultNavigationOptions: {
     headerShown: false
   }
 })
@@ -63,7 +85,7 @@ const resetTest = createStackNavigator({
 const appNavigation = createStackNavigator({
   StartScreen: {
     screen: StartScreen,
-    navigationOptions : {
+    navigationOptions: {
       headerShown: false
     }
   },
@@ -73,35 +95,42 @@ const appNavigation = createStackNavigator({
 
   testNavi: {
     screen: practiceNavigation,
-    navigationOptions : {
+    navigationOptions: {
       headerShown: false
     }
   },
-  resetTest:resetTest,
+  resetTest: resetTest,
 
   MobXTest: MobXTest,
   MobXTest2: MobXTest2,
 
   RequestTest: RequestTest,
 
-  Todo:Todo,
+  Todo: Todo,
 
-  upLoad:upload,  
-  fileupload:fileupload,
-  imagePick:imagePick,
+  upLoad: upload,
+  fileupload: fileupload,
+  imagePick: imagePick,
+
+  tabView: {
+    screen: tabView,
+    navigationOptions: {
+      headerShown: false
+    }
+  },
+
+  toastMessage: toastMessage,
 }, {
   initialRouteName: 'StartScreen',
 })
 
-export default createAppContainer(appNavigation)
-
-// export default createAppContainer(createSwitchNavigator(
-//   {
-//   Main: appNavigation,
-//   Practice: practiceNavigation,
-//   resetTest: resetTest
-//   },
-//   {
-//     initialRouteName: 'Main'
-//   }
-// ))
+export default createAppContainer(createSwitchNavigator(
+  {
+    App: appNavigation,
+    Auth: authNavigation,
+    Loading: Loading
+  },
+  {
+    initialRouteName: 'Loading'
+  }
+))
