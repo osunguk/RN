@@ -47,6 +47,13 @@ import { tabView } from './viewpaper/tabView'
 // toastMessage
 import { toastMessage } from './toast/toastMessage'
 
+// modal page
+import RootStarck from './popup/base'
+
+// modal making
+import ModalExample from './util/ModalExample'
+
+
 const authNavigation = createStackNavigator({
   Login: Login,
   Signup: Signup
@@ -120,6 +127,15 @@ const appNavigation = createStackNavigator({
   },
 
   toastMessage: toastMessage,
+
+  base: RootStarck,
+
+  ModalExample:{
+    screen:ModalExample,
+    navigationOptions:{
+      headerShown:false
+    }
+  }
 }, {
   initialRouteName: 'StartScreen',
 })
