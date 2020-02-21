@@ -5,7 +5,6 @@ import {
   View,
 } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage'
-import { flow } from 'mobx';
 
 export class Loading extends React.Component {
   componentDidMount() {
