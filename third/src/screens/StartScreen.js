@@ -54,7 +54,7 @@ export class StartScreen extends Component {
           </View>
           <View style={{ flexWrap: 'wrap', flexDirection: 'row' }}>
             <View style={{ flex: 1, padding: 10 }}>
-              <Button 
+              <Button
                 title='data form'
                 onPress={() => {
                   this.props.navigation.navigate('upLoad')
@@ -62,7 +62,7 @@ export class StartScreen extends Component {
               />
             </View>
             <View style={{ flex: 1, padding: 10 }}>
-              <Button 
+              <Button
                 title='View paper'
                 onPress={() => {
                   this.props.navigation.navigate('tabView')
@@ -70,7 +70,7 @@ export class StartScreen extends Component {
               />
             </View>
             <View style={{ flex: 1, padding: 10 }}>
-              <Button 
+              <Button
                 title='Toast msg'
                 onPress={() => {
                   this.props.navigation.navigate('toastMessage')
@@ -78,12 +78,31 @@ export class StartScreen extends Component {
               />
             </View>
             <View style={{ flex: 1, padding: 10 }}>
-              <Button 
+              <Button
+                title='modal'
+                onPress={() => {
+                  this.props.navigation.navigate('base')
+                }}
+              />
+            </View>
+            <View style={{ flex: 1, padding: 10 }}>
+              <Button
                 title='log out'
                 color='red'
-                onPress={async() => {
+                onPress={async () => {
                   await AsyncStorage.clear()
                   this.props.navigation.navigate('Loading')
+                }}
+              />
+            </View>
+          </View>
+          <View style={{ flexWrap: 'wrap', flexDirection: 'row' }}>
+            <View style={{ flex: 1, padding: 10 }}>
+              <Button
+                title='dev'
+                color='slateblue'
+                onPress={() => {
+                  this.props.navigation.navigate('ModalExample')
                 }}
               />
             </View>
