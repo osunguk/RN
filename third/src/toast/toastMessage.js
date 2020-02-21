@@ -28,16 +28,16 @@ export class toastMessage extends React.Component {
       hideOnPress: true,
       delay: 0,
       onShow: () => {
-
+        console.log('화면에 뜨기 시작')
       },
       onShown: () => {
-
+        console.log('화면에 다 뜸')
       },
       onHide: () => {
-
+        console.log('내려가기 시작')
       },
       onHidden: () => {
-
+        console.log('다 내려감')
       }
     })
   }
