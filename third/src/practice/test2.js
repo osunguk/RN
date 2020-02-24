@@ -16,6 +16,12 @@ export default class test2 extends Component {
               this.props.navigation.navigate('test3')
             }}
           />
+          <Button
+            title='pop'
+            onPress={() => {
+              this.props.navigation.pop()
+            }}
+          />
         </View>
       </>
     )
