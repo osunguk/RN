@@ -128,7 +128,12 @@ const appNavigation = createStackNavigator({
 
   toastMessage: toastMessage,
 
-  base: RootStarck,
+  base: {
+    screen:RootStarck,
+    navigationOptions: {
+      headerShown:false
+    }
+  },
 
   ModalExample:{
     screen:ModalExample,
