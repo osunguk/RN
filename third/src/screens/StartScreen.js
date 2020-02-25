@@ -102,7 +102,7 @@ export class StartScreen extends Component {
                 title='dev'
                 color='slateblue'
                 onPress={() => {
-                  this.props.navigation.navigate('ModalExample')
+                  this.props.navigation.navigate('flatList')
                 }}
               />
             </View>
