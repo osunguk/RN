@@ -50,9 +50,8 @@ import { toastMessage } from './toast/toastMessage'
 // modal page
 import RootStarck from './popup/base'
 
-// modal making
-import ModalExample from './util/ModalExample'
-
+// flat List test
+import flatList from './flat/flatList'
 
 const authNavigation = createStackNavigator({
   Login: Login,
@@ -135,12 +134,7 @@ const appNavigation = createStackNavigator({
     }
   },
 
-  ModalExample:{
-    screen:ModalExample,
-    navigationOptions:{
-      headerShown:false
-    }
-  }
+  flatList:flatList
 }, {
   initialRouteName: 'StartScreen',
 })
