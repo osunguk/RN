@@ -53,6 +53,9 @@ import RootStarck from './popup/base'
 // flat List test
 import flatList from './flat/flatList'
 
+// pop up list
+import { miningTip } from './popup/miningTip'
+
 const authNavigation = createStackNavigator({
   Login: Login,
   Signup: Signup
@@ -134,9 +137,13 @@ const appNavigation = createStackNavigator({
     }
   },
 
-  flatList:flatList
+  flatList:flatList,
+
+  miningTip:miningTip
 }, {
   initialRouteName: 'StartScreen',
+  mode:'modal',
+  headerMode:'none'
 })
 
 export default createAppContainer(createSwitchNavigator(
