@@ -1,31 +1,18 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, FlatList } from 'react-native'
 
+
 const Data = require('../../static/data/shop.json')
-
-// 힌트를 드리자면 클릭했을 때 상위 컴포넌트 함수 호출하고 상위 컴포넌트에 선택된 항목을 저장하면 됩니다.
-
-// item={item}
-// Checking={this._Checking}
-// selectId={this.state.selectId}
-// _selectId={this._selectId}
-
 class Item extends React.Component {
   state = {
     select: false
   }
+
   render() {
+    const { itemId, itemName, isSelected, OnSelect } = this.props
     let check = ''
-    if (this.state.select){
-      if (this.props.item.id === this.props.selectId){
-        check = '✅'
-      } else if (this.state.select) {
-        this.setState({
-          select: false
-        })
-      }
-    }
-    
+    if (isSelected) check = '✅'
+
     return (
       <View style={{ flexDirection: 'row' }}>
         <View style={{ width: 30, justifyContent: 'center' }}>
@@ -34,13 +21,10 @@ class Item extends React.Component {
         <TouchableOpacity
           style={{ margin: 5, paddingTop: 3, paddingBottom: 3 }}
           onPress={() => {
-            this.setState({
-              select: true
-            })
-            this.props._selectId(this.props.item.id)
+            OnSelect(itemId)
           }}
         >
-          <Text style={{ fontSize: 20, textAlign: 'left', color: this.state.select ? 'yellow' : 'white' }}>{this.props.item.name}</Text>
+          <Text style={{ fontSize: 20, textAlign: 'left', color: isSelected ? 'yellow' : 'white' }}>{itemName}</Text>
         </TouchableOpacity>
       </View>
     )
@@ -49,10 +33,12 @@ class Item extends React.Component {
 
 class NextBtn extends React.Component {
   render() {
+    const { selectId } = this.props
+
     return (
       <TouchableOpacity
-        disabled={this.props.selectId ? false : true}
-        style={{ borderWidth: 1, padding: 15, paddingLeft: 50, paddingRight: 50, borderRadius: 50, borderColor:'white' }}
+        disabled={selectId ? false : true}
+        style={{ borderWidth: 1, padding: 15, paddingLeft: 50, paddingRight: 50, borderRadius: 50, borderColor: 'white' }}
         onPress={() => {
           //
         }}
@@ -65,17 +51,39 @@ class NextBtn extends React.Component {
 
 
 export default class flatList extends React.Component {
-  state = {
-    selectId: false
-  }
-
   static navigationOptions = {
     headerShown: false
   }
+  
+  state = {
+    selectId: false,
+    refreshing: false,
+    DataList: [],
+  }
 
-  _selectId = (id) => {
+  componentDidMount(){
+    const data = require('../../static/data/shop.json')
+    this.setState({
+      DataList: data
+    })
+  }
+
+  OnSelect = (id) => {
     this.setState({
       selectId: id
+    })
+  }
+
+  OnRefresh = () => {
+    const data = require('../../static/data/shop.json')
+    this.setState({
+      selectId: false,
+      refreshing: true,
+      DataList: data.shuffle(),
+    }, () => {
+      this.setState({
+        refreshing: false,  
+      })
     })
   }
 
@@ -92,8 +100,7 @@ export default class flatList extends React.Component {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              // this.props.navigation.pop()
-              // 팝업 창 띄우기
+              this.props.navigation.navigate('miningTip')
             }}
           >
             <Text style={{ padding: 20, color: 'yellow' }}>💡 채굴 팁 💡</Text>
@@ -103,7 +110,7 @@ export default class flatList extends React.Component {
           <Text style={{ fontSize: 30, color: 'white' }}>현재 장소는?</Text>
           <TouchableOpacity
             onPress={() => {
-              // this.props.navigation.pop()
+              this.OnRefresh()
             }}
           >
             <Text style={{ color: 'white' }}>🔄</Text>
@@ -113,14 +120,16 @@ export default class flatList extends React.Component {
           <View style={{ borderColor: 'gray', borderTopWidth: 1, borderBottomWidth: 1 }}>
             <FlatList
               refreshing={this.state.refreshing}
-              data={Data}
+              onRefresh={this.OnRefresh}
+              data={this.state.DataList}
               keyExtractor={item => item.id}
               renderItem={({ item }) => {
                 return (
                   <Item
-                    item={item}
-                    selectId={this.state.selectId}
-                    _selectId={this._selectId}
+                    itemId={item.id}
+                    itemName={item.name}
+                    isSelected={this.state.selectId === item.id}
+                    OnSelect={this.OnSelect}
                   />
                 )
               }}
@@ -128,7 +137,7 @@ export default class flatList extends React.Component {
           </View>
         </View>
         <View style={{ flex: 1.5, justifyContent: 'center', alignItems: 'center' }}>
-          <NextBtn 
+          <NextBtn
             selectId={this.state.selectId}
           />
         </View>
