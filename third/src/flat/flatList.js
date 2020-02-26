@@ -37,11 +37,10 @@ class Item extends React.Component {
             this.setState({
               select: true
             })
-            this.props.Checking()
             this.props._selectId(this.props.item.id)
           }}
         >
-          <Text style={[{ fontSize: 20, textAlign: 'left', color: this.state.select ? 'yellow' : 'white' }]}>{this.props.item.name}</Text>
+          <Text style={{ fontSize: 20, textAlign: 'left', color: this.state.select ? 'yellow' : 'white' }}>{this.props.item.name}</Text>
         </TouchableOpacity>
       </View>
     )
@@ -52,7 +51,7 @@ class NextBtn extends React.Component {
   render() {
     return (
       <TouchableOpacity
-        disabled={this.props.check ? false : true}
+        disabled={this.props.selectId ? false : true}
         style={{ borderWidth: 1, padding: 15, paddingLeft: 50, paddingRight: 50, borderRadius: 50, borderColor:'white' }}
         onPress={() => {
           //
@@ -67,18 +66,11 @@ class NextBtn extends React.Component {
 
 export default class flatList extends React.Component {
   state = {
-    Check: false,
     selectId: false
   }
 
   static navigationOptions = {
     headerShown: false
-  }
-
-  _Checking = () => {
-    this.setState({
-      Check: true
-    })
   }
 
   _selectId = (id) => {
@@ -127,7 +119,6 @@ export default class flatList extends React.Component {
                 return (
                   <Item
                     item={item}
-                    Checking={this._Checking}
                     selectId={this.state.selectId}
                     _selectId={this._selectId}
                   />
@@ -138,7 +129,7 @@ export default class flatList extends React.Component {
         </View>
         <View style={{ flex: 1.5, justifyContent: 'center', alignItems: 'center' }}>
           <NextBtn 
-            check = {this.state.Check}
+            selectId={this.state.selectId}
           />
         </View>
       </View>
