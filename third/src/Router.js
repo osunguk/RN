@@ -56,6 +56,9 @@ import flatList from './flat/flatList'
 // pop up list
 import { miningTip } from './popup/miningTip'
 
+// map
+import map from './map/map'
+
 const authNavigation = createStackNavigator({
   Login: Login,
   Signup: Signup
@@ -138,6 +141,8 @@ const appNavigation = createStackNavigator({
   },
 
   flatList:flatList,
+
+  map:map,
 
   miningTip:miningTip
 }, {
