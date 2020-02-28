@@ -22,7 +22,7 @@ class base extends React.Component {
 }
 
 class modal extends React.Component {
-  
+
 
   render() {
     return (
@@ -94,14 +94,15 @@ class modal extends React.Component {
 const RootStack = createStackNavigator({
   base: base,
   modal: {
-    screen:modal,
+    screen: modal,
   }
 }, {
   mode: 'modal',
   headerMode: 'none',
-  transparentCard: true,
-  cardStyle: {
-    backgroundColor: 'transparent'
+  defaultNavigationOptions: {
+    cardStyle: {
+      backgroundColor: 'transparent'
+    }
   }
 })
 
