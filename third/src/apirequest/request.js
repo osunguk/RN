@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { Text, View, Button } from 'react-native'
+import { Text, View, Button, FlatList } from 'react-native'
 import { create } from 'apisauce'
 
-const path = " http://127.0.0.1:5000/todos"
+const path = "https://jsonplaceholder.typicode.com/todos"
 
 const api = create({
   baseURL: path,
@@ -11,9 +11,7 @@ const api = create({
 
 export default class request extends Component {
   state = {
-    result: {
-      "hello": "hello"
-    }
+    result: []
   }
   test = () => {
     api.get('')
@@ -31,7 +29,20 @@ export default class request extends Component {
           <Text style={{ fontSize: 30 }}>
             Request Screen
           </Text>
-          <Text style={{margin:10, fontSize: 20, fontStyle: 'italic', borderBottomWidth: 1 }}>{this.state.result["hello"]}</Text>
+          <FlatList
+            data={this.state.result}
+            keyExtractor={item => item.id}
+            renderItem={({ item }) => {
+              return (
+                <View style={{ flexDirection: 'row', margin:10 }}>
+                  <View style={{ width: 30, justifyContent: 'center' }}>
+                    <Text>{item.id}</Text>
+                  </View>
+                    <Text style={{ fontSize: 20, textAlign: 'left' }}>{item.title}</Text>
+                </View>
+                )
+            }}
+          />
           <Button
             title='Request Api'
             onPress={() => { this.test() }}
