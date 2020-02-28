@@ -95,17 +95,14 @@ const RootStack = createStackNavigator({
   base: base,
   modal: {
     screen:modal,
-    navigationOptions:{
-      cardStyle: {
-        backgroundColor: 'transparent'
-      }
-    }
   }
 }, {
   mode: 'modal',
   headerMode: 'none',
   transparentCard: true,
-  
+  cardStyle: {
+    backgroundColor: 'transparent'
+  }
 })
 
 export default RootStack
