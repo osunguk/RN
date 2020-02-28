@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, TouchableOpacity, FlatList } from 'react-native'
 
 
-const Data = require('../../static/data/shop.json')
+const Data = require('../static/data/shop.json')
 class Item extends React.Component {
   state = {
     select: false
@@ -62,7 +62,7 @@ export default class flatList extends React.Component {
   }
 
   componentDidMount(){
-    const data = require('../../static/data/shop.json')
+    const data = require('../static/data/shop.json')
     this.setState({
       DataList: data
     })
@@ -75,7 +75,7 @@ export default class flatList extends React.Component {
   }
 
   OnRefresh = () => {
-    const data = require('../../static/data/shop.json')
+    const data = require('../static/data/shop.json')
     this.setState({
       selectId: false,
       refreshing: true,
