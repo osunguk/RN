@@ -97,11 +97,19 @@ export class StartScreen extends Component {
             </View>
           </View>
           <View style={{ flexWrap: 'wrap', flexDirection: 'row' }}>
-          <View style={{ flex: 1, padding: 10 }}>
+            <View style={{ flex: 1, padding: 10 }}>
               <Button
                 title='zerogo clone'
                 onPress={() => {
                   this.props.navigation.navigate('flatList')
+                }}
+              />
+            </View>
+            <View style={{ flex: 1, padding: 10 }}>
+              <Button
+                title='pdf viewer'
+                onPress={() => {
+                  this.props.navigation.navigate('OpenFile')
                 }}
               />
             </View>

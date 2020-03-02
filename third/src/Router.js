@@ -59,6 +59,10 @@ import { miningTip } from './popup/miningTip'
 // map
 import map from './map/map'
 
+// pdf viewer
+import pdf from './pdf/pdf'
+import OpenFile from './pdf/OpenFile'
+
 const authNavigation = createStackNavigator({
   Login: Login,
   Signup: Signup
@@ -144,11 +148,16 @@ const appNavigation = createStackNavigator({
 
   map:map,
 
+  pdf:pdf,
+  OpenFile:OpenFile,
+
   miningTip:miningTip
 }, {
   initialRouteName: 'StartScreen',
   mode:'modal',
-  headerMode:'none'
+  defaultNavigationOptions: {
+    headerMode:'none',
+  }
 })
 
 export default createAppContainer(createSwitchNavigator(
