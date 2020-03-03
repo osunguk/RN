@@ -62,6 +62,8 @@ import map from './map/map'
 // pdf viewer
 import pdf from './pdf/pdf'
 import OpenFile from './pdf/OpenFile'
+import pdfTest from './pdf/first'
+import pdfShow from './pdf/second'
 
 const authNavigation = createStackNavigator({
   Login: Login,
@@ -150,6 +152,8 @@ const appNavigation = createStackNavigator({
 
   pdf:pdf,
   OpenFile:OpenFile,
+  pdfTest:pdfTest,
+  pdfShow:pdfShow,
 
   miningTip:miningTip
 }, {

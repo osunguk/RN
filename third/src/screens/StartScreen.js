@@ -115,6 +115,14 @@ export class StartScreen extends Component {
             </View>
             <View style={{ flex: 1, padding: 10 }}>
               <Button
+                title='pdf component'
+                onPress={() => {
+                  this.props.navigation.navigate('pdfTest')
+                }}
+              />
+            </View>
+            <View style={{ flex: 1, padding: 10 }}>
+              <Button
                 title='RN-maps'
                 color='slateblue'
                 onPress={() => {
