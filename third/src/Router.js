@@ -66,111 +66,122 @@ import pdfTest from './pdf/first'
 import pdfShow from './pdf/second'
 
 const authNavigation = createStackNavigator({
-  Login: Login,
-  Signup: Signup
+    Login: Login,
+    Signup: Signup
 }, {
-  defaultNavigationOptions: {
-    headerShown: false
-  },
-  initialRouteName: 'Login'
+    defaultNavigationOptions: {
+        headerShown: false
+    },
+    initialRouteName: 'Login'
 }
 )
 
 const practiceNavigation = createDrawerNavigator({
-  'stack navi': stack,
-  'drawer navi': drawer,
-  'tab navi': tab,
-  'reset test': reset,
-  choice: choice
+    'stack navi': stack,
+    'drawer navi': drawer,
+    'tab navi': tab,
+    'reset test': reset,
+    choice: choice
 }, {
-  initialRouteName: 'choice'
+    initialRouteName: 'choice'
 })
 
 const resetTest = createStackNavigator({
-  'reset test': reset,
-  'test1': test1,
-  'test2': test2,
-  'test3': test3,
-  'test4': test4,
-  'test5': test5,
+    'reset test': reset,
+    'test1': test1,
+    'test2': test2,
+    'test3': test3,
+    'test4': test4,
+    'test5': test5,
 
 }, {
-  defaultNavigationOptions: {
-    headerShown: false
-  }
+    defaultNavigationOptions: {
+        headerShown: false
+    }
 })
 
 const appNavigation = createStackNavigator({
-  StartScreen: {
-    screen: StartScreen,
-    navigationOptions: {
-      headerShown: false
-    }
-  },
-  LoginScreen: LoginScreen,
-  SignupScreen: SignupScreen,
-  MainScreen: MainScreen,
+    StartScreen: {
+        screen: StartScreen,
+        navigationOptions: {
+            headerShown: false
+        }
+    },
+    LoginScreen: LoginScreen,
+    SignupScreen: SignupScreen,
+    MainScreen: MainScreen,
 
-  testNavi: {
-    screen: practiceNavigation,
-    navigationOptions: {
-      headerShown: false
-    }
-  },
-  resetTest: resetTest,
+    testNavi: {
+        screen: practiceNavigation,
+        navigationOptions: {
+            headerShown: false
+        }
+    },
+    resetTest: resetTest,
 
-  MobXTest: MobXTest,
-  MobXTest2: MobXTest2,
+    MobXTest: MobXTest,
+    MobXTest2: MobXTest2,
 
-  RequestTest: RequestTest,
+    RequestTest: RequestTest,
 
-  Todo: Todo,
+    Todo: Todo,
 
-  upLoad: upload,
-  fileupload: fileupload,
-  imagePick: imagePick,
+    upLoad: upload,
+    fileupload: fileupload,
+    imagePick: imagePick,
 
-  tabView: {
-    screen: tabView,
-    navigationOptions: {
-      headerShown: false
-    }
-  },
+    tabView: {
+        screen: tabView,
+        navigationOptions: {
+            headerShown: false
+        }
+    },
 
-  toastMessage: toastMessage,
+    toastMessage: toastMessage,
 
-  base: {
-    screen:RootStarck,
-    navigationOptions: {
-      headerShown:false
-    }
-  },
+    base: {
+        screen: RootStarck,
+        navigationOptions: {
+            headerShown: false
+        }
+    },
 
-  flatList:flatList,
+    flatList: flatList,
 
-  map:map,
+    map: map,
 
-  pdf:pdf,
-  OpenFile:OpenFile,
-  pdfTest:pdfTest,
-  pdfShow:pdfShow,
+    pdf: pdf,
+    OpenFile: OpenFile,
+    pdfTest: pdfTest,
+    pdfShow: pdfShow,
 
-  miningTip:miningTip
+
 }, {
-  initialRouteName: 'StartScreen',
-  mode:'modal',
-  defaultNavigationOptions: {
-    headerMode:'none',
-  }
+    initialRouteName: 'StartScreen',
+    defaultNavigationOptions: {
+        headerMode: 'none',
+    }
+})
+
+const app = createStackNavigator({
+    appNavigation,
+
+    // modal 창 추가
+    miningTip: miningTip
+}, {
+    mode: 'modal',
+    defaultNavigationOptions: {
+        headerShown: false
+    }
 })
 
 export default createAppContainer(createSwitchNavigator(
-  {
-    App: appNavigation,
-    Auth: authNavigation,
-    Loading: Loading
-  },
-  {
-    initialRouteName: 'Loading'
-  }
+    {
+        App: app,
+        Auth: authNavigation,
+        Loading: Loading
+    },
+    {
+        initialRouteName: 'Loading'
+    }
 ))
