@@ -123,6 +123,14 @@ export class StartScreen extends Component {
             </View>
             <View style={{ flex: 1, padding: 10 }}>
               <Button
+                title='animate'
+                onPress={() => {
+                  this.props.navigation.navigate('animate')
+                }}
+              />
+            </View>
+            <View style={{ flex: 1, padding: 10 }}>
+              <Button
                 title='RN-maps'
                 color='slateblue'
                 onPress={() => {

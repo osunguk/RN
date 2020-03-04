@@ -65,6 +65,9 @@ import OpenFile from './pdf/OpenFile'
 import pdfTest from './pdf/first'
 import pdfShow from './pdf/second'
 
+// animate
+import animate from './animation/animate'
+
 const authNavigation = createStackNavigator({
     Login: Login,
     Signup: Signup
@@ -155,11 +158,11 @@ const appNavigation = createStackNavigator({
     pdfTest: pdfTest,
     pdfShow: pdfShow,
 
-
+    animate: animate,
 }, {
     initialRouteName: 'StartScreen',
     defaultNavigationOptions: {
-        headerMode: 'none',
+        headerShown: false,
     }
 })
 
