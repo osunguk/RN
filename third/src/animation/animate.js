@@ -3,7 +3,7 @@ import { View, Text } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import FadeInOut from './FadeInOut';
 import Rotate from './Rotate'
-import SlideInLeft from './SlideInLeft'
+import SlideIn from './SlideIn'
 
 export default class animate extends React.Component {
     state = {
@@ -21,8 +21,8 @@ export default class animate extends React.Component {
                 classShow = <Rotate />
                 break;
 
-            case 'slideInLeft':
-                classShow = <SlideInLeft />
+            case 'slideIn':
+                classShow = <SlideIn />
                 break;
 
             default:
@@ -55,11 +55,11 @@ export default class animate extends React.Component {
                     <View style={{ flex: 1 }}><TouchableOpacity
                         onPress={() => {
                             this.setState({
-                                animation: 'slideInLeft'
+                                animation: 'slideIn'
                             })
                         }}
                     >
-                        <Text style={{ padding: 10, borderColor: 'black', borderRadius: 10, borderWidth: 1 }}>Slide In Left</Text>
+                        <Text style={{ padding: 10, borderColor: 'black', borderRadius: 10, borderWidth: 1 }}>Slide In</Text>
                     </TouchableOpacity></View>
                     <View style={{ flex: 1 }}><TouchableOpacity
                         onPress={() => {
