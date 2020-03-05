@@ -4,6 +4,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import FadeInOut from './FadeInOut';
 import Rotate from './Rotate'
 import SlideIn from './SlideIn'
+import ScaleUp from './ScaleUp'
 
 export default class animate extends React.Component {
     state = {
@@ -23,6 +24,10 @@ export default class animate extends React.Component {
 
             case 'slideIn':
                 classShow = <SlideIn />
+                break;
+
+            case 'scaleUp':
+                classShow = <ScaleUp />
                 break;
 
             default:
@@ -63,17 +68,19 @@ export default class animate extends React.Component {
                     </TouchableOpacity></View>
                     <View style={{ flex: 1 }}><TouchableOpacity
                         onPress={() => {
-
+                            this.setState({
+                                animation: 'scaleUp'
+                            })
                         }}
                     >
-                        <Text style={{ padding: 10, borderColor: 'black', borderRadius: 10, borderWidth: 1 }}>Fade In</Text>
+                        <Text style={{ padding: 10, borderColor: 'black', borderRadius: 10, borderWidth: 1 }}>Scale Up</Text>
                     </TouchableOpacity></View>
                     <View style={{ flex: 1 }}><TouchableOpacity
                         onPress={() => {
 
                         }}
                     >
-                        <Text style={{ padding: 10, borderColor: 'black', borderRadius: 10, borderWidth: 1 }}>Fade In</Text>
+                        <Text style={{ padding: 10, borderColor: 'black', borderRadius: 10, borderWidth: 1 }}>???</Text>
                     </TouchableOpacity></View>
                 </View>
                 <View style={{ flex: 1 }}>
