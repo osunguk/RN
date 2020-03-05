@@ -1,27 +1,34 @@
 import React from 'react'
-import { View, Text, Animated } from 'react-native'
+import { View, Text } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
+import FadeInOut from './FadeInOut';
+import Rotate from './Rotate'
+import SlideInLeft from './SlideInLeft'
 
 export default class animate extends React.Component {
     state = {
-        value: new Animated.Value(0),
+        animation: '',
     }
-
-    componentDidMount() {
-        this._fadeIn()
-    }
-
-    _fadeIn() {
-        Animated.timing(
-            this.state.value, {
-            toValue: 1,
-            duration: 1000,
-        }
-        ).start(() => {
-        })
-    };
 
     render() {
+        let classShow
+        switch (this.state.animation) {
+            case 'fadeInOut':
+                classShow = <FadeInOut />
+                break;
+
+            case 'rotate':
+                classShow = <Rotate />
+                break;
+
+            case 'slideInLeft':
+                classShow = <SlideInLeft />
+                break;
+
+            default:
+                classShow = null
+        }
+
 
         return (
             <View style={{ flex: 1 }}>
@@ -29,49 +36,48 @@ export default class animate extends React.Component {
                 <View style={{ flexDirection: 'row' }}>
                     <View style={{ flex: 1 }}><TouchableOpacity
                         onPress={() => {
-
+                            this.setState({
+                                animation: 'fadeInOut'
+                            })
                         }}
                     >
-                        <Text style={{padding:10,borderColor:'black', borderRadius:10, borderWidth:1}}>Fade In</Text>
+                        <Text style={{ padding: 10, borderColor: 'black', borderRadius: 10, borderWidth: 1 }}>Fade In & out</Text>
+                    </TouchableOpacity></View>
+                    <View style={{ flex: 1 }}><TouchableOpacity
+                        onPress={() => {
+                            this.setState({
+                                animation: 'rotate'
+                            })
+                        }}
+                    >
+                        <Text style={{ padding: 10, borderColor: 'black', borderRadius: 10, borderWidth: 1 }}>Rotate</Text>
+                    </TouchableOpacity></View>
+                    <View style={{ flex: 1 }}><TouchableOpacity
+                        onPress={() => {
+                            this.setState({
+                                animation: 'slideInLeft'
+                            })
+                        }}
+                    >
+                        <Text style={{ padding: 10, borderColor: 'black', borderRadius: 10, borderWidth: 1 }}>Slide In Left</Text>
                     </TouchableOpacity></View>
                     <View style={{ flex: 1 }}><TouchableOpacity
                         onPress={() => {
 
                         }}
                     >
-                        <Text style={{padding:10,borderColor:'black', borderRadius:10, borderWidth:1}}>Fade In</Text>
+                        <Text style={{ padding: 10, borderColor: 'black', borderRadius: 10, borderWidth: 1 }}>Fade In</Text>
                     </TouchableOpacity></View>
                     <View style={{ flex: 1 }}><TouchableOpacity
                         onPress={() => {
 
                         }}
                     >
-                        <Text style={{padding:10,borderColor:'black', borderRadius:10, borderWidth:1}}>Fade In</Text>
+                        <Text style={{ padding: 10, borderColor: 'black', borderRadius: 10, borderWidth: 1 }}>Fade In</Text>
                     </TouchableOpacity></View>
-                    <View style={{ flex: 1 }}><TouchableOpacity
-                        onPress={() => {
-
-                        }}
-                    >
-                        <Text style={{padding:10,borderColor:'black', borderRadius:10, borderWidth:1}}>Fade In</Text>
-                    </TouchableOpacity></View>
-                    <View style={{ flex: 1 }}><TouchableOpacity
-                        onPress={() => {
-
-                        }}
-                    >
-                        <Text style={{padding:10,borderColor:'black', borderRadius:10, borderWidth:1}}>Fade In</Text>
-                    </TouchableOpacity></View>
-
                 </View>
-                <View style={{flex:1, alignContent:'space-around'}}>
-                <Animated.View style={{ flex: 1, backgroundColor: 'red', opacity: this.state.value}} />
-                <Animated.View style={{ flex: 1, backgroundColor: 'orange', opacity: this.state.value }} />
-                <Animated.View style={{ flex: 1, backgroundColor: 'yellow', opacity: this.state.value }} />
-                <Animated.View style={{ flex: 1, backgroundColor: 'green', opacity: this.state.value }} />
-                <Animated.View style={{ flex: 1, backgroundColor: 'blue', opacity: this.state.value }} />
-                <Animated.View style={{ flex: 1, backgroundColor: 'indigo', opacity: this.state.value }} />
-                <Animated.View style={{ flex: 1, backgroundColor: 'purple', opacity: this.state.value }} />
+                <View style={{ flex: 1 }}>
+                    {classShow}
                 </View>
             </View>
         )
