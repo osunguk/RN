@@ -85,7 +85,6 @@ export default class SlideIn extends React.Component {
                         }}
                     /></View>
                 </View>
-                {/* , transform: [{translateX , translateY}]  */}
                 <View style={{ flex: 1, backgroundColor: 'blanchedalmond', alignItems: 'center', justifyContent: 'center'}}>
                     <Animated.View style={{ width: 200, height: 200, backgroundColor: 'blueviolet', transform: [{translateX: trans.x}, {translateY: trans.y}] }} />
                 </View>
