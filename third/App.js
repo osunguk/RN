@@ -14,7 +14,7 @@ import Store from './src/stores/store'
 const store = new Store();
 
 Array.prototype.shuffle = function() {
-	var i = this.length;
+	let i = this.length;
 	while (i)
 	{
 		var j = Math.floor(Math.random() * i);
